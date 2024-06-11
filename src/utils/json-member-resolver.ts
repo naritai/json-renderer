@@ -1,4 +1,4 @@
-import { JSONValue } from '../types'
+import { JSONValue } from '../pages/main-page/json-renderer/types'
 import { isDate } from './isDate'
 import { isValidEmail } from './isValidEmail'
 

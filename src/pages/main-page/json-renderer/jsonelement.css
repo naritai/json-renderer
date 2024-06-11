@@ -1,0 +1,22 @@
+.row {
+  display: flex;
+  justify-content: flex-start;
+  margin: 5px;
+  gap: 10px;
+  flex-wrap: nowrap;
+  height: 40px;
+}
+
+.item {
+  height: 100%;
+}
+
+.flex {
+  display: flex;
+}
+
+.fixdimensions {
+  max-height: 40px;
+  min-height: 40px;
+  width: 200px;
+}
