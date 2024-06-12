@@ -1,0 +1,11 @@
+.input_wrapper {
+  margin: 10px;
+}
+
+.input_base {
+  min-width: 150px;
+  width: fit-content;
+
+  height: 35px;
+  padding: 5px;
+}

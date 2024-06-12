@@ -1,0 +1,26 @@
+.radio_group_wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 150px;
+  height: 35px;
+  margin: 10px;
+  padding: 6px;
+  border: 1px solid lightgray;
+}
+
+.radio_base {
+  width: 20px;
+  height: 35px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.radio_base__label {
+  cursor: pointer;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+}

@@ -1,0 +1,16 @@
+.textarea_wrapper {
+  margin: 10px;
+}
+
+.textarea_base {
+  min-width: 150px;
+  height: fit-content;
+  padding: 6px;
+}
+
+.fixdimensions {
+  min-height: 35px;
+  max-height: 35px;
+  min-width: 250px;
+  max-width: 250px;
+}

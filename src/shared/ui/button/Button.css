@@ -1,0 +1,22 @@
+.btn_base {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+
+  min-width: 100px;
+  width: fit-content;
+  padding: 10px;
+  margin-top: 3px;
+  height: 35px;
+  outline: none;
+  cursor: pointer;
+  border: 1px solid darkgray;
+
+  background-color: lightblue;
+}
+
+.btn_base:active {
+  outline: none;
+  border: none;
+}
