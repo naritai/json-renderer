@@ -10,10 +10,7 @@ interface ErrorBoundaryState {
   message?: string | null;
 }
 
-export class ErrorBoundary extends Component<
-  ErrorBoundaryProps,
-  ErrorBoundaryState
-> {
+export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
   constructor(props: ErrorBoundaryProps) {
     super(props);
     this.state = { hasError: false, message: null };
@@ -25,10 +22,7 @@ export class ErrorBoundary extends Component<
   }
 
   componentWillUnmount(): void {
-    window.removeEventListener(
-      'unhandledrejection',
-      this.handlePromiseRejection
-    );
+    window.removeEventListener('unhandledrejection', this.handlePromiseRejection);
   }
 
   handlePromiseRejection(event: PromiseRejectionEvent): void {

@@ -12,9 +12,7 @@ export type FormFieldConfig = {
   name: string;
 };
 
-export const resolveFieldType = (
-  value: unknown
-): HTMLInputTypeAttribute | null => {
+export const resolveFieldType = (value: unknown): HTMLInputTypeAttribute | null => {
   if (typeof value === 'string') {
     if (isValidISODateString(value)) {
       return 'datetime-local';

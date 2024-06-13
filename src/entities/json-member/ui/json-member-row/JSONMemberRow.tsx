@@ -15,39 +15,37 @@ type JSONMemberRowProps = {
   editable?: boolean;
 };
 
-export const JSONMemberRow = memo(
-  ({ id, editable = false }: JSONMemberRowProps) => {
-    const { normalizedJsonData } = useNormalizedJSONData();
-    const { hydrate } = useJSONDataStoreActions();
-    const jsonMember = normalizedJsonData[id];
+export const JSONMemberRow = memo(({ id, editable = false }: JSONMemberRowProps) => {
+  const { normalizedJsonData } = useNormalizedJSONData();
+  const { hydrate } = useJSONDataStoreActions();
+  const jsonMember = normalizedJsonData[id];
 
-    const handleEditJSONMember = () => {
-      hydrate({ editableJSONMemberId: String(id) });
-    };
+  const handleEditJSONMember = () => {
+    hydrate({ editableJSONMemberId: String(id) });
+  };
 
-    return (
-      <div className={styles.row} key={String(jsonMember.id)}>
-        <div className={styles.rowFlex}>
-          <Button text="edit" onClick={handleEditJSONMember} />
+  return (
+    <div className={styles.row} key={String(jsonMember.id)}>
+      <div className={styles.rowFlex}>
+        <Button text="edit" onClick={handleEditJSONMember} />
 
-          {Object.entries(jsonMember)
-            .filter(isFieldRestricted)
-            .map((item: [string, JSONValue], idx) => {
-              const { tag, ...props } = getFormFieldConfig(item);
-              const FormField = getFormFieldComponent(tag);
+        {Object.entries(jsonMember)
+          .filter(isFieldRestricted)
+          .map((item: [string, JSONValue], idx) => {
+            const { tag, ...props } = getFormFieldConfig(item);
+            const FormField = getFormFieldComponent(tag);
 
-              return (
-                <FormField
-                  {...props}
-                  key={String(id) + idx}
-                  id={String(id) + Math.random() * 1}
-                  disabled={!editable}
-                />
-              );
-            })}
-        </div>
-        <HorizontalLine />
+            return (
+              <FormField
+                {...props}
+                key={String(id) + idx}
+                id={String(id) + Math.random() * 1}
+                disabled={!editable}
+              />
+            );
+          })}
       </div>
-    );
-  }
-);
+      <HorizontalLine />
+    </div>
+  );
+});

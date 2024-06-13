@@ -21,11 +21,7 @@ export const RadioGroup = ({
     <div className={cn(styles.radioGroupWrapper, null, className)}>
       <div className={styles.flex}>
         <input
-          className={cn(
-            styles.radioBase,
-            { [styles.cursor]: !disabled },
-            className
-          )}
+          className={cn(styles.radioBase, { [styles.cursor]: !disabled }, className)}
           id={id1}
           checked={value === 'true'}
           value={'true'}
@@ -43,11 +39,7 @@ export const RadioGroup = ({
       </div>
       <div className={styles.flex}>
         <input
-          className={cn(
-            styles.radioBase,
-            { [styles.cursor]: !disabled },
-            className
-          )}
+          className={cn(styles.radioBase, { [styles.cursor]: !disabled }, className)}
           id={id2}
           checked={value === 'false'}
           value={'false'}

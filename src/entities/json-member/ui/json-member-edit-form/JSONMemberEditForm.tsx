@@ -24,9 +24,7 @@ export const JSONMemberEditForm = ({
   const formRef = useRef<HTMLFormElement | null>(null);
   const { updateJsonMember } = useJSONDataStoreActions();
   const { normalizedJsonData } = useNormalizedJSONData();
-  const [data, setData] = useState<JSONObject>(
-    normalizedJsonData[jsonMemberId]
-  );
+  const [data, setData] = useState<JSONObject>(normalizedJsonData[jsonMemberId]);
 
   const handleSubmit = (event: React.SyntheticEvent<HTMLFormElement>) => {
     event.preventDefault();

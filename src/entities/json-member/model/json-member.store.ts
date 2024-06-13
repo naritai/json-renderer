@@ -1,9 +1,5 @@
 import { create } from 'zustand';
-import {
-  JSONDataState,
-  JSONObject,
-  NormalizedJSONData,
-} from './json-member.types';
+import { JSONDataState, JSONObject, NormalizedJSONData } from './json-member.types';
 import { useShallow } from 'zustand/react/shallow';
 import { normalizeJSONData } from '../utils/normalize-json-data';
 
