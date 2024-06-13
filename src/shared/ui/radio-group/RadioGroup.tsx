@@ -11,36 +11,47 @@ export const RadioGroup = ({
   className,
   id,
   value,
+  disabled,
   ...props
 }: RadioGroupProps) => {
   return (
-    <div className={cn('radio_group_wrapper', null, className)}>
-      <div className="flex">
-        <input
-          className={cn('radio_base', null, className)}
-          id="true"
-          name={id}
-          checked={value === 'true'}
-          value={'true'}
-          {...props}
-        />
-        <label className="radio_base__label" htmlFor="true">
-          True
-        </label>
+    <form>
+      <div className={cn('radio_group_wrapper', null, className)}>
+        <div className="flex">
+          <input
+            className={cn('radio_base', { cursor: !disabled }, className)}
+            id={'true'}
+            name={id}
+            checked={value === 'true'}
+            value={'true'}
+            disabled={disabled}
+            {...props}
+          />
+          <label
+            className={cn('radio_base__label', { cursor: !disabled })}
+            htmlFor={'true'}
+          >
+            True
+          </label>
+        </div>
+        <div className="flex">
+          <input
+            className={cn('radio_base', { cursor: !disabled }, className)}
+            id={'false'}
+            name={id}
+            checked={value === 'false'}
+            value={'false'}
+            disabled={disabled}
+            {...props}
+          />
+          <label
+            className={cn('radio_base__label', { cursor: !disabled })}
+            htmlFor={'false'}
+          >
+            False
+          </label>
+        </div>
       </div>
-      <div className="flex">
-        <input
-          className={cn('radio_base', null, className)}
-          id="false"
-          name={id}
-          checked={value === 'false'}
-          value={'false'}
-          {...props}
-        />
-        <label className="radio_base__label" htmlFor="false">
-          False
-        </label>
-      </div>
-    </div>
+    </form>
   );
 };

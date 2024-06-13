@@ -1,8 +1,8 @@
-import { TagType, getFormFieldConfig } from '../../utils/get-form-field-config';
+import { getFormFieldConfig } from '../../utils/get-form-field-config';
+import { getFormFieldComponent } from '../../utils/get-form-field-component';
 import { HorizontalLine, Button } from '../../../../shared/ui';
 import { JSONValue } from '../../model/json-member.types';
 import { isFieldRestricted } from '../../utils/is-field-restricted';
-import { getFormFieldComponent } from '../../utils/get-form-field-component';
 import './JSONMemberRow.css';
 import {
   useJSONDataStoreActions,
@@ -19,16 +19,11 @@ export const JSONMemberRow = memo(
   ({ id, editable = false }: JSONMemberRowProps) => {
     const { normalizedJsonData } = useNormalizedJSONData();
     const { hydrate } = useJSONDataStoreActions();
-
-    console.log('render ROW!!!');
+    const jsonMember = normalizedJsonData[id];
 
     const handleEditJSONMember = () => {
       hydrate({ editableJSONMemberId: String(id) });
     };
-
-    const jsonMember = normalizedJsonData[id];
-
-    console.log('jsonMember', jsonMember);
 
     return (
       <div className="row" key={String(jsonMember.id)}>
@@ -45,7 +40,7 @@ export const JSONMemberRow = memo(
                 <FormField
                   {...props}
                   key={String(id) + idx}
-                  id={String(id)}
+                  id={String(id) + Math.random() * 1}
                   disabled={!editable}
                 />
               );

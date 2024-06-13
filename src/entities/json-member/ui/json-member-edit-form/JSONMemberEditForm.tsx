@@ -40,15 +40,12 @@ export const JSONMemberEditForm = ({ id }: JSONMemberEditFormProps) => {
 
   const handleChange = (e: any) => {
     const { value, name, type } = e.target;
-    setData({
-      ...data,
-      [name]: convertTypeToRaw(type, value),
-    });
+    setData({ ...data, [name]: convertTypeToRaw(type, value) });
   };
 
   return (
     <div className="form_wrapper">
-      <form method="dialog" className="json_edit_form" onSubmit={handleSubmit}>
+      <form className="json_edit_form" method="dialog" onSubmit={handleSubmit}>
         {Object.entries(data)
           .filter(isFieldRestricted)
           .map((item: [string, JSONValue], idx) => {

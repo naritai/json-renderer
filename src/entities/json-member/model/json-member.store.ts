@@ -43,7 +43,7 @@ const useJSONdataStoreRaw = create<JSONDataState>()((set, get) => ({
 }));
 
 useJSONdataStoreRaw.subscribe((newState) => {
-  console.log('newState', newState.editableJSONMemberId);
+  console.log('newState', newState);
 });
 
 export const useNormalizedJSONData = () =>
