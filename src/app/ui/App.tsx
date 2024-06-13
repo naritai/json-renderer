@@ -1,9 +1,10 @@
-import { MainPage } from '../../pages/main-page';
-import { useJSONDataStoreActions } from '../../entities/json-member';
+import { useJSONDataStoreActions } from '@entities/json-member';
 import { useEffect } from 'react';
-import styles from './App.module.scss';
+import { ErrorBoundary } from '../providers/error-boundary';
+import { ErrorPage } from '@/pages';
+import { AppRouter } from '../providers/router-provider/ui/AppRouter';
 
-function App() {
+export function App() {
   const { fetchJSONData } = useJSONDataStoreActions();
 
   useEffect(() => {
@@ -11,9 +12,9 @@ function App() {
   }, []);
 
   return (
-    <main className={styles.main}>
-      <MainPage />
-    </main>
+    <ErrorBoundary fallback={() => <ErrorPage />}>
+      <AppRouter />
+    </ErrorBoundary>
   );
 }
 

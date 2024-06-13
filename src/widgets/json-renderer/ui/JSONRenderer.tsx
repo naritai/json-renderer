@@ -2,8 +2,8 @@ import { useRef } from 'react';
 import {
   JSONMemberList,
   useEditableJsonId,
-} from '../../../entities/json-member';
-import { JSONMemberEditForm } from '../../../entities/json-member/ui/json-member-edit-form/JSONMemberEditForm';
+  JSONMemberEditForm,
+} from '@entities/json-member';
 import styles from './JSONRenderer.module.scss';
 
 export const JSONRenderer = () => {

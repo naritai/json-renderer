@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './app/ui/App.tsx';
 import './app/styles/index.scss';
+import { BrowserRouter } from 'react-router-dom';
 
 async function initApp() {
   if (import.meta.env.DEV) {
@@ -13,7 +14,9 @@ async function initApp() {
 initApp().then(() => {
   ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
-      <App />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </React.StrictMode>
   );
 });

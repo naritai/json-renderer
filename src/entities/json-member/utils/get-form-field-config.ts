@@ -1,6 +1,6 @@
 import { HTMLInputTypeAttribute } from 'react';
 import { isValidISODateString } from 'iso-datestring-validator';
-import { isValidEmail } from '../../../shared/utils/isValidEmail';
+import { isValidEmail } from '@shared/utils/isValidEmail';
 import { JSONValue } from '../model/json-member.types';
 
 export type FieldValue = string | number;

@@ -1,5 +1,5 @@
 import { HTMLInputTypeAttribute, useState } from 'react';
-import { Button } from '../../../../shared/ui';
+import { Button } from '@shared/ui';
 import { JSONObject, JSONValue } from '../../model/json-member.types';
 import { getFormFieldComponent } from '../../utils/get-form-field-component';
 import { getFormFieldConfig } from '../../utils/get-form-field-config';
