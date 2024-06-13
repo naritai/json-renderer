@@ -3,7 +3,7 @@ import { getFormFieldComponent } from '../../utils/get-form-field-component';
 import { HorizontalLine, Button } from '../../../../shared/ui';
 import { JSONValue } from '../../model/json-member.types';
 import { isFieldRestricted } from '../../utils/is-field-restricted';
-import './JSONMemberRow.css';
+import styles from './JSONMemberRow.module.scss';
 import {
   useJSONDataStoreActions,
   useNormalizedJSONData,
@@ -26,8 +26,8 @@ export const JSONMemberRow = memo(
     };
 
     return (
-      <div className="row" key={String(jsonMember.id)}>
-        <div className="row_flex">
+      <div className={styles.row} key={String(jsonMember.id)}>
+        <div className={styles.rowFlex}>
           <Button text="edit" onClick={handleEditJSONMember} />
 
           {Object.entries(jsonMember)

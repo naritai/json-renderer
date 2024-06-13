@@ -1,22 +1,19 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
-import './index.css'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './app/ui/App.tsx';
+import './app/styles/index.scss';
 
-async function enableMocking() {
-  if (import.meta.env.PROD) {
-    return
+async function initApp() {
+  if (import.meta.env.DEV) {
+    const { worker } = await import('./mocks/browser');
+    return worker.start();
   }
-  const { worker } = await import('./mocks/browser')
-  // `worker.start()` returns a Promise that resolves
-  // once the Service Worker is up and ready to intercept requests.
-  return worker.start()
 }
 
-enableMocking().then(() => {
+initApp().then(() => {
   ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
       <App />
     </React.StrictMode>
-  )
-})
+  );
+});

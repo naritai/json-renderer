@@ -1,20 +1,20 @@
-import { ButtonHTMLAttributes } from 'react'
-import './Button.css'
+import { ButtonHTMLAttributes } from 'react';
+import styles from './Button.module.scss';
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
-  text: string
-  onClick?: () => void
-}
+  text: string;
+  onClick?: () => void;
+};
 
 export const Button = ({ text, onClick, ...props }: ButtonProps) => {
   const handleClick = () => {
     if (typeof onClick === 'function') {
-      onClick()
+      onClick();
     }
-  }
+  };
   return (
-    <button className="btn_base" onClick={handleClick} {...props}>
+    <button className={styles.btnBase} onClick={handleClick} {...props}>
       {text}
     </button>
-  )
-}
+  );
+};

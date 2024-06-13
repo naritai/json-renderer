@@ -1,6 +1,6 @@
 import { TextareaHTMLAttributes } from 'react';
+import styles from './Textarea.module.scss';
 import cn from 'classnames';
-import './Textarea.css';
 
 type TextareaProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
   id?: string;
@@ -9,11 +9,11 @@ type TextareaProps = TextareaHTMLAttributes<HTMLTextAreaElement> & {
 
 export const Textarea = ({ className, disabled, ...props }: TextareaProps) => {
   return (
-    <div className={cn('textarea_wrapper', null, className)}>
+    <div className={cn(styles.textareaWrapper, null, className)}>
       <textarea
         className={cn(
-          'textarea_base',
-          { ['fixdimensions']: disabled },
+          styles.textareaBase,
+          { [styles.fixdimensions]: disabled },
           className
         )}
         rows={2}

@@ -1,5 +1,5 @@
-import './HorizontalLine.css'
+import styles from './HorizontalLine.module.scss';
 
 export const HorizontalLine = () => {
-  return <div className="line"></div>
-}
+  return <div className={styles.line}></div>;
+};

@@ -1,7 +1,6 @@
 import { InputHTMLAttributes } from 'react';
+import styles from './InputField.module.scss';
 import cn from 'classnames';
-
-import './InputField.css';
 
 type InputFieldProps = InputHTMLAttributes<HTMLInputElement> & {
   id?: string;
@@ -10,9 +9,9 @@ type InputFieldProps = InputHTMLAttributes<HTMLInputElement> & {
 
 export const InputField = ({ className, type, ...props }: InputFieldProps) => {
   return (
-    <div className={cn('input_wrapper', null, className)}>
+    <div className={cn(styles.inputWrapper, null, className)}>
       <input
-        className={cn('input_base', null, className)}
+        className={cn(styles.inputBase, null, className)}
         type={type}
         {...props}
       />

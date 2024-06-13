@@ -1,3 +1,5 @@
+@import './normalize.scss';
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -11,6 +13,10 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 a {
@@ -27,6 +33,17 @@ body {
   display: flex;
   place-items: center;
   min-width: 320px;
+  width: 100%;
+  min-height: 100vh;
+}
+
+html {
+  width: 100%;
+  min-height: 100vh;
+}
+
+#root {
+  width: 100%;
   min-height: 100vh;
 }
 
@@ -65,4 +82,9 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+.widemost {
+  width: 100%;
+  max-width: 100%;
 }

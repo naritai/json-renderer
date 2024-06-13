@@ -4,6 +4,7 @@ import {
   useEditableJsonId,
 } from '../../../entities/json-member';
 import { JSONMemberEditForm } from '../../../entities/json-member/ui/json-member-edit-form/JSONMemberEditForm';
+import styles from './JSONRenderer.module.scss';
 
 export const JSONRenderer = () => {
   const dialogRef = useRef<HTMLDialogElement>(null);
@@ -16,7 +17,7 @@ export const JSONRenderer = () => {
   // we should block all the rest actions on the page when dialog open
 
   return (
-    <div className="json_renderer_wrapper">
+    <div className={styles.jsonRendererWrapper}>
       {editableJsonId && (
         <dialog ref={dialogRef} open={!!editableJsonId}>
           <JSONMemberEditForm id={editableJsonId} />

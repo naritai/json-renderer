@@ -4,7 +4,7 @@ import { JSONObject, JSONValue } from '../../model/json-member.types';
 import { getFormFieldComponent } from '../../utils/get-form-field-component';
 import { getFormFieldConfig } from '../../utils/get-form-field-config';
 import { isFieldRestricted } from '../../utils/is-field-restricted';
-import './JSONMemberEditForm.css';
+import styles from './JSONMemberEditForm.module.scss';
 import {
   useJSONDataStoreActions,
   useNormalizedJSONData,
@@ -44,8 +44,12 @@ export const JSONMemberEditForm = ({ id }: JSONMemberEditFormProps) => {
   };
 
   return (
-    <div className="form_wrapper">
-      <form className="json_edit_form" method="dialog" onSubmit={handleSubmit}>
+    <div className={styles.formWrapper}>
+      <form
+        className={styles.jsonEditForm}
+        method="dialog"
+        onSubmit={handleSubmit}
+      >
         {Object.entries(data)
           .filter(isFieldRestricted)
           .map((item: [string, JSONValue], idx) => {

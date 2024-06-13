@@ -1,18 +1,17 @@
-import { MainPage } from './pages/main-page';
-import './App.css';
-import { useJSONDataStoreActions } from './entities/json-member';
+import { MainPage } from '../../pages/main-page';
+import { useJSONDataStoreActions } from '../../entities/json-member';
 import { useEffect } from 'react';
+import styles from './App.module.scss';
 
 function App() {
   const { fetchJSONData } = useJSONDataStoreActions();
 
-  // fetch data asap
   useEffect(() => {
     fetchJSONData();
   }, []);
 
   return (
-    <main>
+    <main className={styles.main}>
       <MainPage />
     </main>
   );

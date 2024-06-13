@@ -1,6 +1,6 @@
 import { InputHTMLAttributes } from 'react';
+import styles from './RadioGroup.module.scss';
 import cn from 'classnames';
-import './RadioGroup.css';
 
 type RadioGroupProps = InputHTMLAttributes<HTMLInputElement> & {
   id: string;
@@ -16,10 +16,14 @@ export const RadioGroup = ({
 }: RadioGroupProps) => {
   return (
     <form>
-      <div className={cn('radio_group_wrapper', null, className)}>
-        <div className="flex">
+      <div className={cn(styles.radioGroupWrapper, null, className)}>
+        <div className={styles.flex}>
           <input
-            className={cn('radio_base', { cursor: !disabled }, className)}
+            className={cn(
+              styles.radioBase,
+              { [styles.cursor]: !disabled },
+              className
+            )}
             id={'true'}
             name={id}
             checked={value === 'true'}
@@ -28,15 +32,21 @@ export const RadioGroup = ({
             {...props}
           />
           <label
-            className={cn('radio_base__label', { cursor: !disabled })}
+            className={cn(styles.radioBaseLabel, {
+              [styles.cursor]: !disabled,
+            })}
             htmlFor={'true'}
           >
             True
           </label>
         </div>
-        <div className="flex">
+        <div className={styles.flex}>
           <input
-            className={cn('radio_base', { cursor: !disabled }, className)}
+            className={cn(
+              styles.radioBase,
+              { [styles.cursor]: !disabled },
+              className
+            )}
             id={'false'}
             name={id}
             checked={value === 'false'}
@@ -45,7 +55,9 @@ export const RadioGroup = ({
             {...props}
           />
           <label
-            className={cn('radio_base__label', { cursor: !disabled })}
+            className={cn(styles.radioBaseLabel, {
+              [styles.cursor]: !disabled,
+            })}
             htmlFor={'false'}
           >
             False
