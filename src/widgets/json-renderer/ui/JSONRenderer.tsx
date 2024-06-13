@@ -1,27 +1,30 @@
-import { useRef } from 'react';
 import {
   JSONMemberList,
   useEditableJsonId,
   JSONMemberEditForm,
+  useJSONDataStoreActions,
 } from '@entities/json-member';
 import styles from './JSONRenderer.module.scss';
+import { Dialog } from '@/shared/ui';
 
 export const JSONRenderer = () => {
-  const dialogRef = useRef<HTMLDialogElement>(null);
   const editableJsonId = useEditableJsonId();
+  const { hydrate } = useJSONDataStoreActions();
 
-  // edit click
-  // somehow dialog OPEN with form that know what exact element we're editing
-  // on submit --> update the state + reset form + clean state(editable id)
-  // on cancel --> just reset form + clean state(editable id)
-  // we should block all the rest actions on the page when dialog open
+  const handleCloseDialog = () => {
+    hydrate({ editableJSONMemberId: null });
+  };
 
   return (
     <div className={styles.jsonRendererWrapper}>
       {editableJsonId && (
-        <dialog ref={dialogRef} open={!!editableJsonId}>
-          <JSONMemberEditForm id={editableJsonId} />
-        </dialog>
+        <Dialog isOpen={!!editableJsonId} onClose={handleCloseDialog}>
+          <JSONMemberEditForm
+            jsonMemberId={editableJsonId}
+            onClose={handleCloseDialog}
+            dialog={true}
+          />
+        </Dialog>
       )}
 
       <JSONMemberList />

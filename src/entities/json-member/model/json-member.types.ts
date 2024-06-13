@@ -17,6 +17,7 @@ export interface JSONDataState {
   jsonData: JSONArray;
   normalizedJsonData: NormalizedJSONData;
   editableJSONMemberId: string | null;
+  isJsonDataLoading: boolean;
   actions: {
     hydrate: (fresh: Partial<JSONDataState>) => void;
     fetchJSONData: () => Promise<void>;

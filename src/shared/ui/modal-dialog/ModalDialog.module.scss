@@ -1,0 +1,9 @@
+.dialog {
+  margin: 0 auto;
+  align-self: center;
+  border: none;
+}
+
+.dialog::backdrop {
+  background: rgba(50, 99, 149, 0.3);
+}

@@ -11,6 +11,7 @@ const defaultJSONDataState = {
   jsonData: [],
   normalizedJsonData: {} as NormalizedJSONData,
   editableJSONMemberId: null,
+  isJsonDataLoading: false,
 };
 
 const useJSONdataStoreRaw = create<JSONDataState>()((set, get) => ({
@@ -19,12 +20,14 @@ const useJSONdataStoreRaw = create<JSONDataState>()((set, get) => ({
     hydrate: (fresh: Partial<JSONDataState>) => set(fresh),
     fetchJSONData: async () => {
       try {
+        set({ isJsonDataLoading: true });
         const data = await fetch('http://localhost:5173/fakejson');
         const parsed = await data.json();
 
         set({
           jsonData: parsed,
           normalizedJsonData: normalizeJSONData(parsed),
+          isJsonDataLoading: false,
         });
       } catch (err) {
         console.log(err);
@@ -53,7 +56,14 @@ export const useNormalizedJSONData = () =>
     }))
   );
 
-export const useJsonData = () => useJSONdataStoreRaw((state) => state.jsonData);
+export const useJsonData = () =>
+  useJSONdataStoreRaw(
+    useShallow((state) => ({
+      jsonData: state.jsonData,
+      isJsonDataLoading: state.isJsonDataLoading,
+    }))
+  );
+
 export const useEditableJsonId = () =>
   useJSONdataStoreRaw((state) => state.editableJSONMemberId);
 
