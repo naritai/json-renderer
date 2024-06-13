@@ -17,6 +17,9 @@ export const JSONRenderer = () => {
 
   return (
     <div className={styles.jsonRendererWrapper}>
+      <h1>JSON Renderer (3000 items)</h1>
+      <JSONMemberList />
+
       {editableJsonId && (
         <Dialog isOpen={!!editableJsonId} onClose={handleCloseDialog}>
           <JSONMemberEditForm
@@ -26,8 +29,6 @@ export const JSONRenderer = () => {
           />
         </Dialog>
       )}
-
-      <JSONMemberList />
     </div>
   );
 };

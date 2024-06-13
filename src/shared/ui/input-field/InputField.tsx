@@ -7,14 +7,10 @@ type InputFieldProps = InputHTMLAttributes<HTMLInputElement> & {
   className?: string;
 };
 
-export const InputField = ({ className, type, ...props }: InputFieldProps) => {
+export const InputField = ({ className, ...props }: InputFieldProps) => {
   return (
     <div className={cn(styles.inputWrapper, null, className)}>
-      <input
-        className={cn(styles.inputBase, null, className)}
-        type={type}
-        {...props}
-      />
+      <input className={cn(styles.inputBase, null, className)} {...props} />
     </div>
   );
 };

@@ -19,22 +19,17 @@ export const JSONMemberList = () => {
     );
   }
 
-  const Row = ({ index, key, style }: any) => {
-    const { id } = jsonData[index];
+  const Row = ({ index, style }: any) => {
+    const id = String(jsonData[index]?.id);
     return (
-      <div>
-        <div key={key} style={style} className="post">
-          <JSONMemberRow key={String(id)} id={String(id)} />
-        </div>
+      <div key={id} style={style} className="post">
+        <JSONMemberRow id={id} />
       </div>
     );
   };
 
   return (
     <div className={styles.container}>
-      {/* {jsonData.map((el) => (
-        <JSONMemberRow key={String(el.id)} id={String(el.id)} />
-      ))} */}
       <List width={1200} height={580} itemCount={jsonData.length} itemSize={50}>
         {Row}
       </List>

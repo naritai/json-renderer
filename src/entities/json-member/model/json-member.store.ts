@@ -7,6 +7,8 @@ import {
 import { useShallow } from 'zustand/react/shallow';
 import { normalizeJSONData } from '../utils/normalize-json-data';
 
+const RAND_SORT_KEY = ('sortkey' + Math.random() * 1).slice(0, 15);
+
 const defaultJSONDataState = {
   jsonData: [],
   normalizedJsonData: {} as NormalizedJSONData,
@@ -24,8 +26,13 @@ const useJSONdataStoreRaw = create<JSONDataState>()((set, get) => ({
         const data = await fetch('http://localhost:5173/fakejson');
         const parsed = await data.json();
 
+        const sortable = parsed.map((i: JSONObject, idx: number) => ({
+          ...i,
+          [RAND_SORT_KEY]: idx++,
+        }));
+
         set({
-          jsonData: parsed,
+          jsonData: sortable,
           normalizedJsonData: normalizeJSONData(parsed),
           isJsonDataLoading: false,
         });
