@@ -1,5 +1,8 @@
 # 💥🤖🪄 HUGE JSON lists Renderer (mostly arbitrary 🙂)
 
+## LIVE DEMO
+[https://json-renderer.netlify.app/](https://json-renderer.netlify.app/)
+
 ## SCREEN
 ![JSONRenderer](/public/screenshots/edit.png?raw=true "JSONRenderer")
 
@@ -10,7 +13,7 @@
 
 #### Features
 * 🔎 JSON Renderer
-* 🖍 Edit JSON members
+* 🖍 Edit JSON members form
 
 
 #### Used packages / libs / api
@@ -22,14 +25,13 @@
 * Prettier/Eslint/Husky/lint-staged/pre-commit
 
 #### TODO:
+* Add Sort (every field need to be sorted differently based on type) & Filtration
 * Persist edited delta locally: localstorage | IndexedDB
-* Add Sort & Filtration
-* Write mobile styles
 * Use react-hook-form & zod
-* Profile & optimize things when needed. Premature optimisation is evil
+* Profile & optimize things
 * Write integration tests. Use RTL + Vitest
 * Refactoring: there's quite a few things that we need to change to make project more scalable. 
 Some JSON typings to provide really arbitrary JSON, some decisions about form components. But for now I'll live things as is, because no new requirements are coming.
 
 #### P. S.
-* [Used your eslint setup](https://github.com/ezelohar/task-boilerplate/blob/master/.eslintrc-typescript) - There's a few outdated rules + we have use compat for backward compatibility with oldfashioned eslint config. 
+* [Used this eslint setup](https://github.com/ezelohar/task-boilerplate/blob/master/.eslintrc-typescript) - There's a few outdated rules + we have use compat for backward compatibility with oldfashioned eslint config. 
