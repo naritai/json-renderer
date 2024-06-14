@@ -1,5 +1,14 @@
 import styles from './ErrorPage.module.scss';
 
-export const ErrorPage = () => {
-  return <div className={styles.errorPage}>Some error happened. Try reload the page</div>;
-};
+interface ErrorPageProps {
+  message: string;
+}
+
+export function ErrorPage({ message }: ErrorPageProps) {
+	return (
+		<div className={styles.errorPage}>
+			{import.meta.env.DEV ? message : null}
+			Some error happened. Try reload the page
+		</div>
+	);
+}

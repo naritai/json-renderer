@@ -4,7 +4,7 @@ export interface JSONObject {
   [x: string]: JSONValue;
 }
 
-export interface JSONArray extends Array<JSONObject> {}
+export type JSONArray = Array<JSONObject>
 export type NormalizedJSONData = Record<string, JSONObject>;
 
 export interface JSONDataState {

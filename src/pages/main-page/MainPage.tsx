@@ -1,5 +1,5 @@
 import { JSONRenderer } from '@/widgets/json-renderer/ui/JSONRenderer/JSONRenderer';
 
-export const MainPage = () => {
-  return <JSONRenderer />;
-};
+export function MainPage() {
+	return <JSONRenderer />;
+}

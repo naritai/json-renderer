@@ -5,17 +5,17 @@ import { ErrorPage } from '@/pages';
 import { AppRouter } from '../providers/router-provider/ui/AppRouter';
 
 export function App() {
-  const { fetchJSONData } = useJSONDataStoreActions();
+	const { fetchJSONData } = useJSONDataStoreActions();
 
-  useEffect(() => {
-    fetchJSONData();
-  }, []);
+	useEffect(() => {
+		fetchJSONData();
+	}, [fetchJSONData]);
 
-  return (
-    <ErrorBoundary fallback={() => <ErrorPage />}>
-      <AppRouter />
-    </ErrorBoundary>
-  );
+	return (
+		<ErrorBoundary fallback={ErrorPage}>
+			<AppRouter />
+		</ErrorBoundary>
+	);
 }
 
 export default App;

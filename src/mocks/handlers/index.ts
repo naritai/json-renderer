@@ -6,7 +6,7 @@ import fakejson from '../fakejson3000.json';
 // return 1000 elements
 
 export const handlers = [
-  http.get('http://localhost:5173/fakejson', () => {
-    return HttpResponse.json(fakejson.slice(0, 3000));
-  }),
+	http.get('http://localhost:5173/fakejson', () => {
+		return HttpResponse.json(fakejson.slice(0, 3000));
+	}),
 ];

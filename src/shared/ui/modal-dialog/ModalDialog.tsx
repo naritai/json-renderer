@@ -7,25 +7,25 @@ interface DialogProps {
   onClose: () => void;
 }
 
-export const Dialog = ({ children, isOpen, onClose }: DialogProps) => {
-  const dialogRef = useRef<HTMLDialogElement | null>(null);
+export function Dialog({ children, isOpen, onClose }: DialogProps) {
+	const dialogRef = useRef<HTMLDialogElement | null>(null);
 
-  useEffect(() => {
-    if (isOpen) {
-      dialogRef.current?.showModal();
-    } else {
-      dialogRef.current?.close();
-    }
-  }, [isOpen]);
+	useEffect(() => {
+		if (isOpen) {
+			dialogRef.current?.showModal();
+		} else {
+			dialogRef.current?.close();
+		}
+	}, [isOpen]);
 
-  const closeDialog = () => {
-    dialogRef.current?.close();
-    onClose();
-  };
+	const closeDialog = () => {
+		dialogRef.current?.close();
+		onClose();
+	};
 
-  return (
-    <dialog onCancel={closeDialog} className={styles.dialog} ref={dialogRef}>
-      {children}
-    </dialog>
-  );
-};
+	return (
+		<dialog onCancel={closeDialog} className={styles.dialog} ref={dialogRef}>
+			{children}
+		</dialog>
+	);
+}

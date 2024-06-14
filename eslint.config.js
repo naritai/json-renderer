@@ -16,7 +16,7 @@ const compat = new FlatCompat({
 export default [  
   ...compat.config({
     env: { node: true },
-    extends: ['airbnb', 'plugin:@typescript-eslint/recommended'],
+    extends: ['airbnb', 'plugin:@typescript-eslint/recommended', 'prettier'],
     parser: '@typescript-eslint/parser',
     parserOptions: {
       "ecmaVersion": 2018,
@@ -300,7 +300,7 @@ export default [
       "react/no-direct-mutation-state": "warn",
       "react/no-is-mounted": "warn",
       "react/no-typos": "error",
-      "react/react-in-jsx-scope": "error",
+      "react/react-in-jsx-scope": "off",
       "react/require-render-return": "error",
       "react/style-prop-object": "warn",
       "react/jsx-no-useless-fragment": "warn",
@@ -427,7 +427,20 @@ export default [
       "import/no-duplicates": "off",
       "import/prefer-default-export": "off",
       "no-shadow": "off",
-      "arrow-body-style": "off"
+      "arrow-body-style": "off",
+      "react/require-default-props": "off",
+      "react/no-array-index-key": "off",
+      "jsx-a11y/label-has-associated-control": ["error", {
+        "required": {
+          "some": ["nesting", "id"]
+        }
+      }],
+      "jsx-a11y/label-has-for": ["error", {
+        "required": {
+          "some": ["nesting", "id"]
+        }
+      }],
+      "react/button-has-type": 'off'
     },
   },
 ];
