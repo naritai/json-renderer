@@ -1,30 +1,35 @@
-# React + TypeScript + Vite
+# 💥🤖🪄 HUGE JSON lists Renderer (mostly arbitrary 🙂)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## SCREEN
+![JSONRenderer](/public/screenshots/edit.png?raw=true "JSONRenderer")
 
-Currently, two official plugins are available:
+#### Run & Requirements
+* clone this repo and open terminal in the root of the repo
+* run `yarn install` (you have use Node 18v or higher)
+* run `yarn dev` and follow the link from your command line
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+#### Features
+* 🔎 JSON Renderer
+* 🖍 Edit JSON members
 
-## Expanding the ESLint configuration
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+#### Used packages / libs / api
+* [Vite](https://vitejs.dev/)
+* [Feature Sliced Design](https://feature-sliced.design/ru/docs/)
+* [SASS](https://sass-lang.com/)
+* [React-Window](https://github.com/bvaughn/react-window)
+* [Zustand](https://github.com/pmndrs/zustand)
+* Prettier/Eslint/Husky/lint-staged/pre-commit
 
-- Configure the top-level `parserOptions` property like this:
+#### TODO:
+* Persist edited delta locally: localstorage | IndexedDB
+* Add Sort & Filtration
+* Write mobile styles
+* Use react-hook-form & zod
+* Profile & optimize things when needed. Premature optimisation is evil
+* Write integration tests. Use RTL + Vitest
+* Refactoring: there's quite a few things that we need to change to make project more scalable. 
+Some JSON typings to provide really arbitrary JSON, some decisions about form components. But for now I'll live things as is, because no new requirements are coming.
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+#### P. S.
+* [Used your eslint setup](https://github.com/ezelohar/task-boilerplate/blob/master/.eslintrc-typescript) - There's a few outdated rules + we have use compat for backward compatibility with oldfashioned eslint config. 
