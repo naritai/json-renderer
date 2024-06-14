@@ -1,31 +1,48 @@
-module.exports = {
-  "root": true,
-    "extends": [
-      "airbnb",
-      "plugin:@typescript-eslint/eslint-recommended",
-      "plugin:@typescript-eslint/recommended",
-      "prettier"
-    ],
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
+import path from "path";
+import typeScriptEsLintPlugin from '@typescript-eslint/eslint-plugin';
+import esLintConfigPrettier from 'eslint-config-prettier';
+import { FlatCompat } from "@eslint/eslintrc";
+import { fileURLToPath } from "url";
+
+// mimic CommonJS variables -- not needed if using CommonJS
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const compat = new FlatCompat({
+  baseDirectory: __dirname,
+  recommendedConfig: typeScriptEsLintPlugin.configs['recommended'],
+});
+
+export default [  
+  ...compat.config({
+    env: { node: true },
+    extends: ['airbnb', 'plugin:@typescript-eslint/recommended'],
+    parser: '@typescript-eslint/parser',
+    parserOptions: {
       "ecmaVersion": 2018,
       "sourceType": "module"
     },
-    "env": {
-      "browser": true,
-      "node": true
+    plugins: ['react-hooks', 'react', '@typescript-eslint'],
+    rules: {
+      '@typescript-eslint/no-unused-vars': 'error',
+      '@typescript-eslint/no-empty-interface': 'error',
     },
-    "globals": {
-      "fetch": false
+    env: {
+      browser: true,
+      node: true
     },
-    "plugins": [
-      "@typescript-eslint",
-      "react-hooks",
-      "import",
-      "jsx-a11y",
-      "react"
-    ],
-    "rules": {
+    globals: {
+      fetch: false
+    },
+  }),
+
+  // Flat config for turning off all rules that are unnecessary or might conflict with Prettier.
+  esLintConfigPrettier,
+
+  // Flat config for ESLint rules.
+  {
+    rules: {
+      camelcase: ['error', { ignoreDestructuring: true }],
       "@typescript-eslint/explicit-member-accessibility": "off",
       "@typescript-eslint/explicit-module-boundary-types": "off",
       "@typescript-eslint/explicit-function-return-type": "off",
@@ -411,5 +428,6 @@ module.exports = {
       "import/prefer-default-export": "off",
       "no-shadow": "off",
       "arrow-body-style": "off"
-    }
-}
+    },
+  },
+];
