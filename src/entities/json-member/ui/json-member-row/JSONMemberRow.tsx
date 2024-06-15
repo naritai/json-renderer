@@ -37,6 +37,7 @@ export const JSONMemberRow = memo(({ id, editable = false }: JSONMemberRowProps)
 
 						return (
 							<FormField
+								data-testid="form-field"
 								{...props}
 								key={String(id) + idx}
 								id={String(id) + Math.random() * 1}

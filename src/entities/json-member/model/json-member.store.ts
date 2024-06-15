@@ -3,7 +3,7 @@ import { JSONDataState, JSONObject, NormalizedJSONData } from './json-member.typ
 import { useShallow } from 'zustand/react/shallow';
 import { normalizeJSONData } from '../utils/normalize-json-data';
 
-const RAND_SORT_KEY = (`sortkey${  Math.random() * 1}`).slice(0, 15);
+const RAND_SORT_KEY = `sortkey${Math.random() * 1}`.slice(0, 15);
 
 const defaultJSONDataState = {
 	jsonData: [],
@@ -49,7 +49,7 @@ const useJSONdataStoreRaw = create<JSONDataState>()((set, get) => ({
 }));
 
 useJSONdataStoreRaw.subscribe((newState) => {
-	if (import.meta.env.DEV) {
+	if (import.meta.env.DEV && import.meta.env.MODE !== 'test') {
 		console.log('CHANGED_STATED in DEV mode: ', newState);
 	}
 });

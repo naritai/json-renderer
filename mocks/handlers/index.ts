@@ -1,12 +1,18 @@
 import { http, HttpResponse } from 'msw';
 import fakejson from '../fakejson3000.json';
+import { JSONArray } from '@/entities/json-member';
 
-// TODO: add response types JSON, etc
-// https://mswjs.io/docs/best-practices/typescript/
-// return 1000 elements
+export const successWithData = (data?: JSONArray) => {
+  return http.get<never, never, never>('http://localhost:5173/fakejson', () => {
+    return HttpResponse.json(data ?? fakejson.slice(0, 3000));
+  });
+};
 
-export const handlers = [
-	http.get('http://localhost:5173/fakejson', () => {
-		return HttpResponse.json(fakejson.slice(0, 3000));
-	}),
-];
+export const successWithNoData = http.get<never, never, never>(
+  'http://localhost:5173/fakejson',
+  () => {
+    return HttpResponse.json([]);
+  }
+);
+
+export const handlers = [successWithData()];

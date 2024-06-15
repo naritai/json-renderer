@@ -25,14 +25,22 @@ devices it's not working, so check it up from Desktop device only.
 * [React-Window](https://github.com/bvaughn/react-window)
 * [Zustand](https://github.com/pmndrs/zustand)
 * [MSW](https://mswjs.io/)
+* [Vitest](https://vitest.dev/)
+* [React Testing Library](https://testing-library.com/)
 * Prettier/Eslint/Husky
 
+#### Tests
+* write a few integration tests
+* Why integration tests frist in React app ?
+[Writing Tests (redux)](https://redux.js.org/usage/writing-tests)
+[Kent C. Dodds (Implementation details)](https://kentcdodds.com/blog/testing-implementation-details)
+
 #### TODO:
+* Write more integration tests
 * Add Sort (every field need to be sorted differently based on type) & Filtration
 * Persist edited delta locally: localstorage | IndexedDB
 * Use react-hook-form & zod
 * Profile & optimize things
-* Write integration tests. Use RTL + Vitest + MSW
 * Refactoring: there's quite a few things that we need to change to make project more scalable. 
   * provide more robust JSON typings to make it really arbitrary JSON
   * make more general form components + use libs for that + make validation

@@ -9,13 +9,21 @@ interface DialogProps {
 
 export function Dialog({ children, isOpen, onClose }: DialogProps) {
 	const dialogRef = useRef<HTMLDialogElement | null>(null);
+	const bodyOverflow = useRef(document.body.style.overflow);
 
 	useEffect(() => {
 		if (isOpen) {
 			dialogRef.current?.showModal();
+			bodyOverflow.current = document.body.style.overflow;
+			document.body.style.overflow = 'hidden';
 		} else {
 			dialogRef.current?.close();
+			document.body.style.overflow = bodyOverflow.current;
 		}
+
+		return () => {
+			document.body.style.overflow = bodyOverflow.current;
+		};
 	}, [isOpen]);
 
 	const closeDialog = () => {
