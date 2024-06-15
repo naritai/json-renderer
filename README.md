@@ -3,7 +3,7 @@
 ## LIVE DEMO
 [https://json-renderer.netlify.app/](https://json-renderer.netlify.app/)
 * note: MSW is used in production just to showcase purposes only, as a consequences, on mobile
-deviced it won't work, so check it up from Desktop device only.
+devices it's not working, so check it up from Desktop device only.
 
 ## SCREEN
 ![JSONRenderer](/public/screenshots/edit.png?raw=true "JSONRenderer")
