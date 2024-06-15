@@ -5,17 +5,17 @@ import './app/styles/index.scss';
 import { BrowserRouter } from 'react-router-dom';
 
 async function initApp(): Promise<ServiceWorkerRegistration | undefined> {
-  // not DEV | PROD check for netlify to be worked
-  const { worker } = await import('../mocks/browser.ts');
-  return worker.start();
+	// not DEV | PROD check for netlify to be worked
+	const { worker } = await import('../mocks/browser.ts');
+	return worker.start();
 }
 
 initApp().then(() => {
-  ReactDOM.createRoot(document.getElementById('root')!).render(
-    <React.StrictMode>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </React.StrictMode>
-  );
+	ReactDOM.createRoot(document.getElementById('root')!).render(
+		<React.StrictMode>
+			<BrowserRouter>
+				<App />
+			</BrowserRouter>
+		</React.StrictMode>
+	);
 });

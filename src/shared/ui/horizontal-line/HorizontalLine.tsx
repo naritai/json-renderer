@@ -6,5 +6,5 @@ interface HorizontalLineProps {
 }
 
 export function HorizontalLine({ className }: HorizontalLineProps) {
-  return <div className={cn(styles.line, null, className)} />;
+	return <div className={cn(styles.line, null, className)} />;
 }

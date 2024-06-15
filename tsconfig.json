@@ -20,6 +20,8 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
 
+    "types": ["vitest/globals"],
+
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
@@ -30,6 +32,6 @@
       "@widgets/*": ["./src/widgets/*"],
     },
   },
-  "include": ["src", "mocks"],
+  "include": ["src", "mocks", "config/vitest.setup.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
