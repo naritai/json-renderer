@@ -2,8 +2,8 @@
 
 ## LIVE DEMO
 [https://json-renderer.netlify.app/](https://json-renderer.netlify.app/)
-* note: on mobile ot won't work, bc MSW Service Worker won't supported, so open from desktop.
-Of course we could use just a simple file... data.json, but project won't adapted for mobile either.
+* note: MSW is used in production just to showcase purposes only, as a consequences, on mobile
+deviced it won't work, so check it up from Desktop device only.
 
 ## SCREEN
 ![JSONRenderer](/public/screenshots/edit.png?raw=true "JSONRenderer")

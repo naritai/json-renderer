@@ -1,5 +1,10 @@
 import styles from './HorizontalLine.module.scss';
+import cn from 'classnames';
 
-export function HorizontalLine() {
-	return <div className={styles.line} />;
+interface HorizontalLineProps {
+  className?: string;
+}
+
+export function HorizontalLine({ className }: HorizontalLineProps) {
+  return <div className={cn(styles.line, null, className)} />;
 }
