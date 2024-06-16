@@ -2,6 +2,7 @@ import { render, screen } from '@testing-library/react';
 import { JSONRenderer } from './JSONRenderer/JSONRenderer';
 import { server } from '../../../../mocks/server';
 import { successWithData, successWithNoData } from 'mocks/handlers';
+import userEvent from '@testing-library/user-event';
 
 const testData = [
 	{
@@ -74,28 +75,20 @@ describe('JSONRenderer', () => {
 		expect(screen.queryByText(testData[0].id)).toBeNull();
 	});
 
+	test('When we click edit button, edit form is rendered', async () => {
+		server.use(successWithData(testData));
+		const user = userEvent.setup();
+
+		render(<JSONRenderer />);
+
+		const editBtns = await screen.findAllByRole('button', { name: 'edit' });
+		user.click(editBtns[0]);
+
+		const editForm = (await screen.findByTestId('edit-json-form')) as HTMLFormElement;
+		expect(editForm).toBeInTheDocument();
+	});
+
 	// TODO:
-	// test('When edit form is submitted -> data successfully updated', async () => {
-	//   server.use(successWithData(testData));
-
-	//   render(<JSONRenderer />);
-
-	//   // get edit buttons
-	//   // userEvent click
-	//   // get the form and edit values (use toHaveFormValues matcher)
-	//   // save the form
-	//   // assert that all the values from row 1 match
-	// });
-
-	// test('When edit form is cancelled -> changed data will not update', async () => {
-	//   server.use(successWithData(testData));
-
-	//   render(<JSONRenderer />);
-
-	//   // get edit buttons
-	//   // userEvent click
-	//   // get the form and edit values (use toHaveFormValues matcher)
-	//   // cancel the form via cancel button
-	//   // assert that all the values still same
-	// });
+	// check editing process
+	// check editing process with discarding changes
 });

@@ -27,6 +27,12 @@ export default [
       '@typescript-eslint/no-unused-vars': 'error',
       '@typescript-eslint/no-empty-interface': 'error',
     },
+    overrides: [
+      {
+        files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
+        extends: ['plugin:testing-library/react'],
+      },
+    ],
     env: {
       browser: true,
       node: true

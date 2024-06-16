@@ -7,8 +7,8 @@ interface ErrorPageProps {
 export function ErrorPage({ message }: ErrorPageProps) {
 	return (
 		<div className={styles.errorPage}>
-			{import.meta.env.DEV ? message : null}
-			Some error happened. Try reload the page
+			<div>{import.meta.env.DEV ? message : null}</div>
+			<div>Some error happened. Try reload the page</div>
 		</div>
 	);
 }

@@ -23,17 +23,17 @@ export function JSONMemberEditForm({
 }: JSONMemberEditFormProps) {
 	const { updateJsonMember } = useJSONDataStoreActions();
 	const { normalizedJsonData } = useNormalizedJSONData();
-	const [data, setData] = useState<JSONObject>(normalizedJsonData[jsonMemberId]);
+	const [formData, setFormData] = useState<JSONObject>(normalizedJsonData[jsonMemberId]);
 
 	const handleSubmit = (event: React.SyntheticEvent<HTMLFormElement>) => {
 		event.preventDefault();
-		updateJsonMember(data);
+		updateJsonMember(formData);
 		handleReset();
 	};
 
 	const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
 		const { value, name, type } = e.target;
-		setData({ ...data, [name]: convertTypeToRaw(type, value) });
+		setFormData({ ...formData, [name]: convertTypeToRaw(type, value) });
 	};
 
 	const handleReset = () => {
@@ -43,11 +43,12 @@ export function JSONMemberEditForm({
 	return (
 		<div className={styles.formWrapper}>
 			<form
-				className={styles.jsonEditForm}
-				{...(dialog && { method: 'dialog' })}
 				onSubmit={handleSubmit}
+				className={styles.jsonEditForm}
+				data-testid="edit-json-form"
+				{...(dialog && { method: 'dialog' })}
 			>
-				{Object.entries(data)
+				{Object.entries(formData)
 					.filter(isFieldRestricted)
 					.map((item: [string, JSONValue], idx) => {
 						const { tag, ...props } = getFormFieldConfig(item);

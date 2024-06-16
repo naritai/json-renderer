@@ -13,11 +13,15 @@ export function Dialog({ children, isOpen, onClose }: DialogProps) {
 
 	useEffect(() => {
 		if (isOpen) {
-			dialogRef.current?.showModal();
-			bodyOverflow.current = document.body.style.overflow;
-			document.body.style.overflow = 'hidden';
+			if (dialogRef.current && dialogRef.current.showModal) {
+				dialogRef.current?.showModal();
+				bodyOverflow.current = document.body.style.overflow;
+				document.body.style.overflow = 'hidden';
+			}
 		} else {
-			dialogRef.current?.close();
+			if (dialogRef.current && dialogRef.current.close) {
+				dialogRef.current.close();
+			}
 			document.body.style.overflow = bodyOverflow.current;
 		}
 
@@ -32,7 +36,12 @@ export function Dialog({ children, isOpen, onClose }: DialogProps) {
 	};
 
 	return (
-		<dialog onCancel={closeDialog} className={styles.dialog} ref={dialogRef}>
+		<dialog
+			data-testid="dialog"
+			onCancel={closeDialog}
+			className={styles.dialog}
+			ref={dialogRef}
+		>
 			{children}
 		</dialog>
 	);

@@ -10,5 +10,6 @@ test('App is rendered successfully', async () => {
 	);
 
 	const heading = await screen.findByRole('heading', { level: 1 });
+	expect(heading).toBeInTheDocument();
 	expect(heading).toHaveTextContent(/JSON Renderer/i);
 });
