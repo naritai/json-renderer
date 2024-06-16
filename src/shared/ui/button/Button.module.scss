@@ -19,3 +19,7 @@
   outline: none;
   border: none;
 }
+
+.btn_base:disabled {
+  cursor: default;
+}

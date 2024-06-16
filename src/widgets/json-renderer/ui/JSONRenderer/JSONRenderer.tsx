@@ -4,6 +4,7 @@ import {
 	JSONMemberEditForm,
 	useJSONDataStoreActions,
 	useJsonData,
+	JSONObject,
 } from '@entities/json-member';
 import styles from './JSONRenderer.module.scss';
 import { Dialog } from '@/shared/ui';
@@ -12,7 +13,7 @@ import { useEffect } from 'react';
 export function JSONRenderer() {
 	const editableJsonId = useEditableJsonId();
 	const { jsonData, isJsonDataLoading } = useJsonData();
-	const { hydrate, fetchJSONData } = useJSONDataStoreActions();
+	const { hydrate, fetchJSONData, updateJsonMember } = useJSONDataStoreActions();
 
 	useEffect(() => {
 		fetchJSONData();
@@ -20,6 +21,10 @@ export function JSONRenderer() {
 
 	const handleCloseDialog = () => {
 		hydrate({ editableJSONMemberId: null });
+	};
+
+	const handleSubmit = (data: JSONObject) => {
+		updateJsonMember(data);
 	};
 
 	return (
@@ -32,6 +37,7 @@ export function JSONRenderer() {
 					<JSONMemberEditForm
 						jsonMemberId={editableJsonId}
 						onClose={handleCloseDialog}
+						onSubmit={handleSubmit}
 						dialog
 					/>
 				</Dialog>
